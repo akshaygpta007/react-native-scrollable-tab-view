@@ -116,11 +116,11 @@ const ScrollableTabBar = createReactClass({
       const newLineLeft = (pageOffset * nextTabLeft + (1 - pageOffset) * lineLeft);
       const newLineRight = (pageOffset * nextTabRight + (1 - pageOffset) * lineRight);
 
-      this.state._leftTabUnderline.setValue(newLineLeft);
-      this.state._widthTabUnderline.setValue(newLineRight - newLineLeft);
+      this.state._leftTabUnderline.setValue(newLineLeft + ((newLineRight - newLineLeft - 27) / 2));
+      this.state._widthTabUnderline.setValue(27);
     } else {
-      this.state._leftTabUnderline.setValue(lineLeft);
-      this.state._widthTabUnderline.setValue(lineRight - lineLeft);
+      this.state._leftTabUnderline.setValue(lineLeft + ((lineRight - lineLeft) - 27) / 2);
+      this.state._widthTabUnderline.setValue(27);
     }
   },
 
@@ -154,9 +154,9 @@ const ScrollableTabBar = createReactClass({
   render() {
     const tabUnderlineStyle = {
       position: 'absolute',
-      height: 4,
-      backgroundColor: 'navy',
       bottom: 0,
+      backgroundColor: '#1FC19D',
+      height: 2,
     };
 
     const dynamicTabUnderline = {
